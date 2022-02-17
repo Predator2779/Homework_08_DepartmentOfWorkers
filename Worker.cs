@@ -1,8 +1,16 @@
-﻿namespace Homework_08
+﻿namespace Homework_08_DepOfWorks
 {
-    struct Worker
+    public class Worker
     {
         #region Конструкторы
+
+        /// <summary>
+        /// Null.
+        /// </summary>
+        public Worker()
+        {
+
+        }
 
         /// <summary>
         /// Создание сотрудника
@@ -33,7 +41,7 @@
         /// <returns></returns>
         public string Print()
         {
-            return $"{this.id,15} {this.firstName,15} {this.lastName,15} {this.age,15} {this.salary,15} {this.countProjects,10}";
+            return $"{this.id} {this.firstName,15} {this.lastName,20} {this.age,20} {this.salary,15} {this.countProjects,30}";
         }
 
         #endregion
@@ -43,7 +51,7 @@
         /// <summary>
         /// ID
         /// </summary>
-        public int ID { get { return this.id; } private set { this.id = value; } }
+        public int ID { get { return this.id; } set { this.id = value; } }
 
         /// <summary>
         /// Имя
@@ -58,7 +66,7 @@
         /// <summary>
         /// Должность
         /// </summary>
-        public int Position { get { return this.age; } set { this.age = value; } }
+        public int Age { get { return this.age; } set { this.age = value; } }
 
         /// <summary>
         /// Оплата труда

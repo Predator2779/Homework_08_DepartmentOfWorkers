@@ -1,4 +1,6 @@
-﻿namespace Homework_08
+﻿using System;
+
+namespace Homework_08_DepOfWorks
 {
     class Program
     {
@@ -80,27 +82,53 @@
         {
             Repository rep = new Repository(@"G:\Work\_VS\VS_HWork\");
 
-            rep.SaveJson();
+            rep.PrintListDeps(rep.listDeps);
 
-            //char contin = 'y';
+            char contin = 'y';
 
-            //while (contin == 'y')
-            //{
-            //    Console.WriteLine("");
+            while (contin != 'n')
+            {
+                if (rep.listDeps.Count != 0)
+                {
+                    Console.Clear();
 
-            //    switch (Convert.ToInt32(Console.ReadLine()))
-            //    {
-            //        case 1:
-                        
-            //            break;
-            //        case 2:
-                        
-            //            break;
-            //    }
+                    rep.PrintListDeps(rep.listDeps);
 
-            //    Console.WriteLine("Продолжить? y/n");
-            //    contin = Convert.ToChar(Console.ReadLine());
-            //}
+                    Console.WriteLine("\n[1] Создать отдел.\n[2] Изменить отдел.\n[3] Удалить отдел.\n[4] Сохранить документ.\n[5] Загрузить документ.\n[6] Сортировка.\n[7] Выйти\n");
+
+                    switch (Convert.ToInt32(Console.ReadLine()))
+                    {
+                        case 1:
+                            rep.CreateDep();
+                            break;
+                        case 2:
+                            rep.EditDep(rep.SelectIndex());
+                            break;
+                        case 3:
+                            rep.RemoveDep(rep.SelectIndex());
+                            break;
+                        case 4:
+                            rep.SaveData();
+                            break;
+                        case 5:
+                            rep.LoadData();
+                            break;
+                        case 6:
+                            rep.SortDeps();
+                            break;
+                        default:
+                            contin = 'n';
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Нажмите Enter, чтобы создать отдел."); Console.ReadLine();
+
+                    rep.CreateDep(); Console.Clear();
+                    rep.PrintListDeps(rep.listDeps); Console.WriteLine();
+                }
+            }
         }
     }
 }
